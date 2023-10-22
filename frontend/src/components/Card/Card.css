@@ -17,6 +17,7 @@ img {
 
 .card-content {
   padding: 10px;
+  text-align: center;
 }
 
 h2 {
@@ -40,8 +41,8 @@ p {
   font-size: 14px;
 }
 
-.borrow-button {
-  border-radius: 50px;
+.content-row {
+  border-radius: 5px;
   background: linear-gradient(to right, #8e2de2, #4a00e0);
   white-space: nowrap;
   padding: 10px 22px;
@@ -52,10 +53,10 @@ p {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  margin: 10px;
+  width: 100%;
 }
 
-.borrow-button:hover {
+/* .content-row:hover {
   background: #8e2de2;
   color: #fff;
-}
+} */

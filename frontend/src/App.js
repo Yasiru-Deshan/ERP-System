@@ -127,7 +127,7 @@ function App() {
             <Notification />
 
             <div>{!isLoading && routes}</div>
-            <Footer />
+           
           </div>
         </BrowserRouter>
       </NotificationContext.Provider>

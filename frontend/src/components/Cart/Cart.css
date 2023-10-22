@@ -13,6 +13,19 @@
     font-size: 36px;
 }
 
+.checkout-button-area{
+    text-align: right;
+    margin: -40px 40px 5px;
+
+}
+
+.error{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800px;
+    margin: 40px 0px 190px 0px;
+}
+
 .searchContainer{
   padding: 50px 200px 0 200px;
 }

@@ -4,10 +4,12 @@ import { AuthContext } from "../../context/AuthContext";
 import { NotificationContext } from "../../context/NotificationContext";
 import { Navigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const auth = useContext(AuthContext);
   const notification = useContext(NotificationContext);
+  const navigate = useNavigate();
   const [user, setUserData] = useState({
     email: "",
     password: "",
@@ -38,8 +40,7 @@ const Login = () => {
           response.data.role,
           response.data.user
         );
-        <Navigate to="/" replace={true}/>;
-        return <Navigate to="/" replace={true} />;
+        navigate("/home");  
       } else {
         notification.showNotification("please check your credentials", true);
       }
@@ -55,12 +56,7 @@ const Login = () => {
     });
   };
   return (
-    <div
-      style={{
-        background:
-          "linear-gradient(to left,#7F00FF, #E100FF)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
-      }}
-    >
+    <div>
       <div className="row justify-content-center">
         <Card
           className="text-center"
@@ -68,9 +64,9 @@ const Login = () => {
             width: "28rem",
             marginTop: "10rem",
             marginBottom: "5rem",
-            boxShadow: "5px 8px 35px ",
             borderRadius: "20px",
             padding: "30px",
+            height: "100%"
           }}
         >
           <Card.Body>

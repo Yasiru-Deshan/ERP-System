@@ -57,6 +57,7 @@ const getCartItems = async (req, res, next) => {
     const cart_items = user.cartItems;
 
     return res.status(200).json({ msg: "Cart Items Found", cart_items });
+
   } catch (err) {
     return res.status(500).json({
       msg: err,

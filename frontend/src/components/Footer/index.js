@@ -78,9 +78,9 @@ const Footer = () => {
 
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo to="/">LOOK AI</SocialLogo>
+            <SocialLogo to="/">ERP SYSTEM</SocialLogo>
             <WebsiteRights>
-              LOOK AI @ {new Date().getFullYear()}
+              ERP SYSTEM @ {new Date().getFullYear()}
               All rights reserved.
             </WebsiteRights>
             <SocialIcons>
