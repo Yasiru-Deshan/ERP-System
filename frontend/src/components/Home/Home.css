@@ -1,0 +1,27 @@
+.cardContainer{
+  justify-content: center;
+  display: grid;
+  grid: auto / auto auto auto auto;
+  margin-top: 50px;
+}
+
+.searchContainer{
+
+ padding: 100px 200px 0 200px;
+}
+
+.btn-search {
+	  background: #424242;
+	  border-radius: 0;
+	  color: #fff;
+	  border-width: 1px;
+	  border-style: solid;
+	  border-color: #1c1c1c;
+	}
+	.btn-search:link, .btn-search:visited {
+	  color: #fff;
+	}
+	.btn-search:active, .btn-search:hover {
+	  background: #1c1c1c;
+	  color: #fff;
+	}
