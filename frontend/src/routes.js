@@ -17,7 +17,6 @@ const getRoutes = (role, token) => {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<JobList />} />
-        <Route path="/new" element={<Job />} />
       </Routes>
     );
   }  else if (token && role === "csr") {
@@ -25,8 +24,7 @@ const getRoutes = (role, token) => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/home" element={<JobList />} />
-        <Route path="/new" element={<Job />} />
+        <Route path="/home" element={<Job />} />
       </Routes>
     );
   } else {

@@ -24,37 +24,34 @@ const CartItem = (props) => {
   }, []);
 
     const removeItem = async (itemId) => {
-      let update;
-
       const cartItem = {
         inventoryItemId: itemId,
       };
 
       const config = {
         headers: {
-          "x-auth-token": `${auth.token}`,
+          "x-auth-token": auth.token,
           "Content-Type": "application/json",
         },
       };
 
       try {
-        update = await axios.put(
+        const update = await axios.put(
           "http://localhost:5000/api/inventory/remove_item",
           cartItem,
           config
         );
 
-         console.log(update);
-
-        if (update) {
-          window.alert("Item removed from the cart");
-          window.location.reload();
+        if (update.data.success) {
+            window.alert("Item removed from the cart");
+            window.location.reload();
+        } else {
+          console.error("Item removal failed. Server response:", update.data);
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.error("An error occurred:", error);
       }
     };
-
 
   return (
     <div className="card">
