@@ -23,35 +23,47 @@ const CartItem = (props) => {
     Aos.init({ duration: 500 });
   }, []);
 
-  const removeItem = async (itemId) => {
-    const cartItem = {
-      inventoryItemId: itemId,
-    };
+ const handleRemoveClick = () => {
+   removeItem(id);
+ };
 
-    const config = {
-      headers: {
-        "x-auth-token": auth.token,
-        "Content-Type": "application/json",
-      },
-    };
+ const removeItem = async (itemId) => {
+   console.log("Token from context:", auth.token);
+   console.log("Item ID to remove:", itemId);
 
-    try {
-      const update = await axios.put(
-        "http://localhost:5000/api/inventory/remove_item",
-        cartItem,
-        config
-      );
+   const cartItem = {
+     itemIdToRemove: itemId,
+   };
 
-      if (update.data.success) {
-        window.alert("Item removed from the cart");
-        window.location.reload();
-      } else {
-        console.error("Item removal failed. Server response:", update.data);
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
+   const config = {
+     headers: {
+       "x-auth-token": auth.token,
+       "Content-Type": "application/json",
+     },
+   };
+
+   try {
+     const update = await axios.put(
+       "http://localhost:5000/api/inventory/remove_item",
+       JSON.stringify(cartItem),
+       config
+     );
+
+     if (update.data.success) {
+       window.alert("Item removed from the cart");
+
+       window.location.reload();
+     } else {
+       console.error("Item removal failed. Server response:", update.data);
+     }
+   } catch (error) {
+     console.error(
+       "An error occurred:",
+       error.response ? error.response.data : error
+     );
+   }
+ };
+
 
   return (
     <div className="card">
@@ -67,7 +79,7 @@ const CartItem = (props) => {
         <div className="content-row">
           <p>{inv_pro_selling}</p>
           <p>{sku}</p>
-          <button className="btn btn-danger" onClick={() => removeItem(id)}>
+          <button className="btn btn-danger" onClick={handleRemoveClick}>
             Remove
           </button>
         </div>
