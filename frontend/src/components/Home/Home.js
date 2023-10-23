@@ -6,7 +6,8 @@ import axios from "axios";
 
 const Home = () => {
   const auth = useContext(AuthContext);
-  const [items, setItems] = useState([]);
+  let [items, setItems] = useState([]);
+  let [search, setSearch] = useState("");
 
   useEffect(() => {
     const config = {
@@ -27,11 +28,27 @@ const Home = () => {
     getItems();
   }, [auth.token]);
 
+  //search filter
+  if (search.length > 0) {
+
+    items = items.filter((i) => {
+      return i.inv_pro_name.toLowerCase().match(search.toLowerCase());
+    });
+  }
+
   return (
-    <div style={{padding: "100px"}}>
+    <div style={{ padding: "100px" }}>
       <div className="searchContainer">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search for..."
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            value={search}
+          />
           <span class="input-group-btn">
             <button class="btn btn-search" type="button">
               <i class="fa fa-search fa-fw"></i> Search
