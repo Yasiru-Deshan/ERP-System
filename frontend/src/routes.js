@@ -5,20 +5,28 @@ import SignUp from "./components/SignUp/Signup";
 import Home from "./components/Home/Home";
 import Cart from "./components/Cart/Cart";
 import Order from "./components/Order/Order";
+import Profile from "./components/Profile/Profile";
+import Job from "./components/Warranty/Job/Job";
+import JobList from "./components/Warranty/JobList/JobList";
 
 const getRoutes = (role, token) => {
   let routes;
-  if (token && role === "admin") {
-    routes = (
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-            </Routes>
-    );
-  }  else if (token && role === "Manager") {
+  if (token && role === "sm") {
     routes = (
       <Routes>
-        <Route path="/">{<Login />}</Route>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<JobList />} />
+        <Route path="/new" element={<Job />} />
+      </Routes>
+    );
+  }  else if (token && role === "csr") {
+    routes = (
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<JobList />} />
+        <Route path="/new" element={<Job />} />
       </Routes>
     );
   } else {
@@ -30,6 +38,7 @@ const getRoutes = (role, token) => {
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Order/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
     );
   }

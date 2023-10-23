@@ -28,7 +28,7 @@ const Home = () => {
   }, [auth.token]);
 
   return (
-    <div>
+    <div style={{padding: "100px"}}>
       <div className="searchContainer">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search for..." />
@@ -40,7 +40,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="cardContainer">
+      <div className="homeContainer">
         {items.map((item) => (
           <Card
             key={item._id}

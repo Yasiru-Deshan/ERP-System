@@ -128,9 +128,9 @@ const createJob = async (req, res, next) => {
 //getJobs
 const getJobs = async (req, res, next) => {
   try {
-    const user = await Warranty.find();
+    const job = await Warranty.find();
 
-    res.status(200).json(user);
+    res.status(200).json(job);
   } catch (err) {
     res.status(500).json(err);
   }

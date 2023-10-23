@@ -7,7 +7,6 @@ import Modal from "react-modal";
 const OrderItemCard = styled.div`
   border: 1px solid #e0e0e0;
   padding: 16px;
-  margin: 8px 0;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -15,6 +14,7 @@ const OrderItemCard = styled.div`
   background-color: #fff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+  ${'' /* margin: 0px 0px -80px 0px; */}
 `;
 
 const ItemId = styled.span`

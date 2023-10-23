@@ -1,4 +1,4 @@
-.cardContainer{
+.homeContainer{
   justify-content: center;
   display: grid;
   grid: auto / auto auto auto auto;
@@ -6,8 +6,7 @@
 }
 
 .searchContainer{
-
- padding: 100px 200px 0 200px;
+ padding: 200px 200px 0 200px;
 }
 
 .btn-search {

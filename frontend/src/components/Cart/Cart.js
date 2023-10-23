@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import Card from "../Card/Card";
 import "./Cart.css";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import CartItem from "./CartItem";
 
 const Cart = () => {
 
@@ -89,8 +89,9 @@ const Cart = () => {
 
         <div className="cardContainer">
           {items.map((item) => (
-            <Card
+            <CartItem
               key={item._id}
+              id={item._id}
               inv_pro_name={item.inv_pro_name}
               sku={item.sku}
               inv_pro_description={item.inv_pro_description}

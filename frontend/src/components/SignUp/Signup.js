@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import axios from "axios";
 import { NotificationContext } from "../../context/NotificationContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
 
@@ -37,7 +38,7 @@ const Signup = () => {
       );
       if (newCustomer) {
         window.alert("Signed up Successfully!");
-        navigate("/home");  
+        navigate("/login");  
       } else {
         notification.showNotification(
           "something went wrong. please try again",
@@ -153,6 +154,9 @@ const Signup = () => {
               </div>
             </form>
           </Card.Body>
+          <Card.Footer>
+            Already have an account?<Link to="/login">Signin</Link>
+          </Card.Footer>
         </Card>
       </div>
     </div>

@@ -17,6 +17,6 @@ router.put("/profile/edit", Authentication, updateProfile);
 router.get("/profile/:id", getProfile);
 router.put("/profileimage", Authentication, uploadProfilePic);
 router.get("/customers", getCustomers);
-router.get("/delete", deleteProfile);
+router.delete("/delete", deleteProfile);
 
 module.exports = router;

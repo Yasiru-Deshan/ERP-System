@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { NotificationContext } from "../../context/NotificationContext";
-import { Navigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const auth = useContext(AuthContext);
@@ -66,7 +66,7 @@ const Login = () => {
             marginBottom: "5rem",
             borderRadius: "20px",
             padding: "30px",
-            height: "100%"
+            height: "100%",
           }}
         >
           <Card.Body>
@@ -106,6 +106,9 @@ const Login = () => {
               </div>
             </form>
           </Card.Body>
+          <Card.Footer>
+            Need an account?<Link to="/signup">Sign Up</Link>
+          </Card.Footer>
         </Card>
       </div>
     </div>

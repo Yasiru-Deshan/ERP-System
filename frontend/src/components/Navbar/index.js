@@ -59,16 +59,30 @@ const Navbar = ({ toggle }) => {
             >
               Home
             </NavLinks>
-            <NavLinks
-              to="/cart"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-80}
-            >
-              Cart
-            </NavLinks>
+            {auth.role !== "csr" && auth.role !== "sm" && (
+              <NavLinks
+                to="/cart"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+              >
+                Cart
+              </NavLinks>
+            )}
+            {auth.isLoggedIn && auth.role === "user" && (
+              <NavLinks
+                to="/profile"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+              >
+                Profile
+              </NavLinks>
+            )}
             {auth.role === "user" && (
               <div>
                 <NavLinks
