@@ -49,7 +49,7 @@ const CartItem = (props) => {
        config
      );
 
-     if (update.data.success) {
+     if (update) {
        window.alert("Item removed from the cart");
 
        window.location.reload();
