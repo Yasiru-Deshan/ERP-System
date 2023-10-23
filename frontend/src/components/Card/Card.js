@@ -11,6 +11,7 @@ const Card = (props) => {
     const { id,
             inv_pro_name,
             sku,
+            inv_img,
             inv_pro_description,
             inv_pro_cost,
             inv_pro_selling,
@@ -56,11 +57,11 @@ const Card = (props) => {
   return (
     <div className="card">
       <img
-        src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D"
+        src={inv_img}      
         alt=""
       />
       <div className="card-content">
-        <h2 style={{padding: "10px"}}>{inv_pro_name}</h2>
+        <h2 style={{padding: "10px", height:"60px"}}>{inv_pro_name}</h2>
         {/* <div className="description-row">
           <p>{inv_pro_description}</p>
         </div> */}

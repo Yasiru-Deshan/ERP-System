@@ -123,6 +123,7 @@ useEffect(() => {
             inv_pro_warranty={item.inv_pro_warranty}
             inv_pro_quantity={item.inv_pro_quantity}
             inv_pro_reorder_level={item.inv_pro_reorder_level}
+            inv_img={item.inv_img}
           />
         ))}
       </div>
