@@ -8,6 +8,7 @@ import Order from "./components/Order/Order";
 import Profile from "./components/Profile/Profile";
 import Job from "./components/Warranty/Job/Job";
 import JobList from "./components/Warranty/JobList/JobList";
+import CustomerTable from "./components/Profile/CustomerList";
 
 const getRoutes = (role, token) => {
   let routes;
@@ -37,6 +38,7 @@ const getRoutes = (role, token) => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Order/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/customers" element={<CustomerTable/>}/>
       </Routes>
     );
   }

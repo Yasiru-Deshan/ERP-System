@@ -83,6 +83,18 @@ const Navbar = ({ toggle }) => {
                 Profile
               </NavLinks>
             )}
+            {auth.isLoggedIn && auth.role === "user" && (
+              <NavLinks
+                to="/customers"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+              >
+                Customers
+              </NavLinks>
+            )}
             {auth.role === "user" && (
               <div>
                 <NavLinks
