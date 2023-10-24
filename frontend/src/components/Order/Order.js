@@ -49,6 +49,7 @@ const Order = () => {
     for (let j = 0; items.length > j; j++) {
       bodyData.push([
         items[j]._id,
+        auth.fullName,
         items[j].price,
         items[j].status,
       ]);
@@ -78,6 +79,7 @@ const Order = () => {
       head: [
         [
           "Order ID",
+          "Customer Name",
           "Total",
           "Status",
         ],
