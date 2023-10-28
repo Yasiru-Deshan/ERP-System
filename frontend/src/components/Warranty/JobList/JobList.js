@@ -50,7 +50,7 @@ const JobList = () => {
   useEffect(() => {
     const config = {
       headers: {
-        "x-auth-token": auth.token, // No need for `${}` here
+        "x-auth-token": auth.token,
         "Content-Type": "application/json",
       },
     };
@@ -67,7 +67,7 @@ const JobList = () => {
     };
 
     getItems();
-  }, [auth.token, mdal]); // Fixed typo here
+  }, [auth.token, mdal]); 
 
   const deleteJob = async (id) => {
     const body = {
@@ -127,9 +127,9 @@ const JobList = () => {
     let bodyData = [];
     for (let j = 0; jobs.length > j; j++) {
       bodyData.push([
-        jobs[j].cus_name,
+        jobs[j].cus_name.firstName + " " + jobs[j].cus_name.lastName,
         jobs[j].cus_mobile,
-        jobs[j].device,
+        jobs[j].device.inv_pro_name,
         jobs[j].error_type,
         jobs[j].error_description,
         jobs[j].job_type,
@@ -277,93 +277,94 @@ const JobList = () => {
         </div>
       ) : (
         <div>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Customer Mobile</th>
-              <th>Device</th>
-              <th>Error Type</th>
-              <th>Error Description</th>
-              <th>Job Type</th>
-              <th>Status</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {jobs.map((warranty, index) => (
-              <tr key={index}>
-                <td>{warranty.cus_name}</td>
-                <td>{warranty.cus_mobile}</td>
-                <td>{warranty.device}</td>
-                <td>{warranty.error_type}</td>
-                <td>{warranty.error_description}</td>
-                <td>{warranty.job_type}</td>
-                <td>{warranty.status}</td>
-                <td>{warranty.created_by.name}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => {
-                      setJobID(warranty._id);
-                      setStatus(warranty.status);
-                      setModal(true);
-                    }}
-                  >
-                    Update
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    onClick={() => deleteJob(warranty._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Customer Mobile</th>
+                <th>Device</th>
+                <th>Error Type</th>
+                <th>Error Description</th>
+                <th>Job Type</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <button
+            </thead>
+            <tbody>
+              {jobs.map((warranty, index) => (
+                <tr key={index}>
+                  <td>
+                    {warranty.cus_name.firstName} {warranty.cus_name.lastName}
+                  </td>
+                  <td>{warranty.cus_mobile}</td>
+                  <td>{warranty.device.inv_pro_name}</td>
+                  <td>{warranty.error_type}</td>
+                  <td>{warranty.error_description}</td>
+                  <td>{warranty.job_type}</td>
+                  <td>{warranty.status}</td>
+                  <td>{warranty.created_by.name}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        setJobID(warranty._id);
+                        setStatus(warranty.status);
+                        setModal(true);
+                      }}
+                    >
+                      Update
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      onClick={() => deleteJob(warranty._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button
             className="newButton"
             style={{
-                fontSize: "calc(0.2vw + 12px)",
-                borderRadius: "3px",
-                padding: "calc(15px + 1vw)",
-                color: "#fff",
-                backgroundColor: "#01bf71",
-                border: "none",
-                marginLeft: "20px",
+              fontSize: "calc(0.2vw + 12px)",
+              borderRadius: "3px",
+              padding: "calc(15px + 1vw)",
+              color: "#fff",
+              backgroundColor: "#01bf71",
+              border: "none",
+              marginLeft: "20px",
             }}
             onClick={pdf}
-            >
+          >
             <svg
-                id="dwn-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-cloud-arrow-down-fill"
-                viewBox="0 0 16 16"
+              id="dwn-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-cloud-arrow-down-fill"
+              viewBox="0 0 16 16"
             >
-                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z" />
+              <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z" />
             </svg>
             <span
-                className="spinner-border spinner-border-sm"
-                id="loading"
-                role="status"
-                aria-hidden="true"
-                style={{ display: "none" }}
+              className="spinner-border spinner-border-sm"
+              id="loading"
+              role="status"
+              aria-hidden="true"
+              style={{ display: "none" }}
             ></span>{" "}
             Generate Report
-            </button>
-            </div>
+          </button>
+        </div>
       )}
-
     </div>
   );
 }

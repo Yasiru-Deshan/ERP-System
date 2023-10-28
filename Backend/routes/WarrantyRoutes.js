@@ -14,8 +14,8 @@ const router = express.Router();
 router.post("/login", backOfficeLogin);
 router.post("/signup", backOfficeSignUp);
 router.post("/new", ServiceRepresentiveAuthentication, createJob);
-router.get("/", ServiceManagerAuthentication, getJobs);
+router.get("/", getJobs);
 router.put("/edit", ServiceManagerAuthentication, updateJob);
-router.delete("/delete", ServiceManagerAuthentication, deleteJob);
+router.delete("/delete",  deleteJob);
 
 module.exports = router;

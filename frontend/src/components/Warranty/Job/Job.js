@@ -58,8 +58,8 @@ const Job = () => {
     };
 
     const newJob = {
-      cus_name: name.current.value,
-      device: device.current.value,
+      customerId: name.current.value,
+      inventoryId: device.current.value,
       error_type: error.current.value,
       error_description: description.current.value,
       cus_mobile: mobile.current.value,
@@ -154,7 +154,7 @@ const Job = () => {
                       {item.orderItems.map((orderItem, orderItemIndex) => (
                         <option
                           key={orderItemIndex}
-                          value={orderItem.inv_pro_name}
+                          value={orderItem._id}
                         >
                           {orderItem.inv_pro_name}
                         </option>

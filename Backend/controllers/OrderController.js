@@ -84,9 +84,10 @@ const customerOrders = async (req, res, next) => {
 
 const getOrderById = async (req, res, next) => {
   try {
-    const order = await Order.findById(req.params.id);
+    const order = await Order.findById(req.params.id).populate('orderItems');
+    const items = order.orderItems;
 
-    res.status(200).json(order);
+    res.status(200).json(items);
   } catch (err) {
     res.status(500).json(err);
   }

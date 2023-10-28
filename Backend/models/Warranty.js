@@ -2,13 +2,15 @@ const mongoose = require("mongoose");
 
 const WarrantySchema = mongoose.Schema({
   cus_name: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
   cus_mobile: {
     type: Number,
   },
   device: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Inventory",
   },
   error_type: {
     type: String,

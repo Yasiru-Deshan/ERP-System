@@ -1,3 +1,4 @@
+const Inventory = require("../models/Inventory");
 const User = require("../models/User");
 const Warranty = require("../models/Warranty");
 
@@ -97,29 +98,20 @@ const backOfficeLogin = async (req, res, next) => {
 const createJob = async (req, res, next) => {
   try {
     const {
-      cus_name,
       cus_mobile,
-      device,
       error_type,
       error_description,
       job_type,
     } = req.body;
 
-    if (
-      !cus_name ||
-      !cus_mobile ||
-      !device ||
-      !error_type ||
-      !error_description ||
-      !job_type
-    ) {
-      return res.status(400).json({ msg: "Missing required fields" });
-    }
+const cus_name = await User.findOne({ _id: req.body.customerId });
+const device = await Inventory.findOne({ _id: req.body.inventoryId });
+
 
     const warranty = new Warranty({
-      cus_name,
+      cus_name : cus_name,
       cus_mobile,
-      device,
+      device : device,
       error_type,
       error_description,
       job_type,
@@ -139,7 +131,7 @@ const createJob = async (req, res, next) => {
 //getJobs
 const getJobs = async (req, res, next) => {
   try {
-    const job = await Warranty.find();
+    const job = await Warranty.find().populate('cus_name').populate('device');
 
     res.status(200).json(job);
   } catch (err) {
