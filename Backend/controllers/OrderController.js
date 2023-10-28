@@ -46,7 +46,32 @@ const myOrders = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
     
-    await user.populate("orders");
+    await user.populate({
+      path: 'orders',
+      populate: {
+        path: 'orderItems',
+      },
+    });
+    const orders = user.orders;
+
+    return res.status(200).json({ msg: "Orders Found", orders });
+  } catch (err) {
+    return res.status(500).json({
+      msg: err,
+    });
+  }
+};
+
+const customerOrders = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    await user.populate({
+      path: "orders",
+      populate: {
+        path: "orderItems",
+      },
+    });
     const orders = user.orders;
 
     return res.status(200).json({ msg: "Orders Found", orders });
@@ -99,3 +124,4 @@ exports.createOrder = createOrder;
 exports.myOrders = myOrders;
 exports.updateOrder = updateOrder;
 exports.getOrderById = getOrderById;
+exports.customerOrders = customerOrders;

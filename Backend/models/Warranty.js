@@ -19,7 +19,7 @@ const WarrantySchema = mongoose.Schema({
   job_type: {
     type: String,
   },
-  status:{
+  status: {
     type: String,
   },
   created_by: {

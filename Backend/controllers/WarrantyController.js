@@ -105,6 +105,17 @@ const createJob = async (req, res, next) => {
       job_type,
     } = req.body;
 
+    if (
+      !cus_name ||
+      !cus_mobile ||
+      !device ||
+      !error_type ||
+      !error_description ||
+      !job_type
+    ) {
+      return res.status(400).json({ msg: "Missing required fields" });
+    }
+
     const warranty = new Warranty({
       cus_name,
       cus_mobile,
@@ -112,7 +123,7 @@ const createJob = async (req, res, next) => {
       error_type,
       error_description,
       job_type,
-      created_by : req.user.id,
+      created_by: req.user.id,
       status: "pending",
     });
 
